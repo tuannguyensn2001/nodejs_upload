@@ -1,7 +1,12 @@
-FROM node:latest
+FROM node:alpine
 WORKDIR /app
 
+WORKDIR /app
+
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
+
 COPY . .
-RUN npm install
-EXPOSE 10000
-CMD ["npm","start"]
+
+CMD [ "node", "src/server/index.js" ]

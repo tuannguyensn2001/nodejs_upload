@@ -6,6 +6,7 @@ const downloadFile = async (ref) => {
 };
 
 exports.upload = async (file) => {
+  console.log(file);
   const storageRef = ref(storage, file.originalname);
   const result = await uploadBytes(storageRef, file.buffer);
   return await downloadFile(result.ref);
